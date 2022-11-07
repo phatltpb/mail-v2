@@ -24,8 +24,8 @@ func runHttpsServer() {
 	// port := config.GetConfig().Server.HTTP.Port
 	port, exists := os.LookupEnv("PORT")
 	if !exists {
-		port = "8080"
+		port = "3000"
 	}
 
-	r.Run(port)
+	r.Run(":" + port)
 }
