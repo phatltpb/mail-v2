@@ -22,7 +22,10 @@ func runHttpsServer() {
 	r := routers.InitRouter()
 	os.LookupEnv("PORT")
 	// port := config.GetConfig().Server.HTTP.Port
-	port := os.Getenv("PORT")
+	port, exists := os.LookupEnv("PORT")
+	if !exists {
+		port = "8080"
+	}
 
-	r.Run(":", port)
+	r.Run(port)
 }
